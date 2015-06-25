@@ -1,0 +1,723 @@
+\documentclass[spanish]{beamer}
+
+\usetheme{default}
+
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{polyglossia}
+
+\setdefaultlanguage{spanish}
+\setotherlanguage[variant=usmax]{english}
+
+\usepackage{tikz}
+
+\usetikzlibrary{automata}
+
+\tikzset{initial text=,node distance=2cm,auto}
+
+\usepackage{fancyvrb}
+
+\DefineShortVerb{\|}
+\DefineVerbatimEnvironment{code}{Verbatim}{frame=lines}
+
+\title{Ahorcado}
+\subtitle{Programación funcional imperativa con Elm}
+\author{Juan Pedro Villa Isaza}
+\institute{Stack Builders}
+\date{2 de julio de 2015}
+
+\logo{\includegraphics[height=0.5cm]{stackbuilders.png}}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\frame{\titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{columns}[onlytextwidth,T]
+    \begin{column}{.5\textwidth}
+      \begin{code}
+  ____
+  |  |
+  |
+  |
+  |
+  |
+ ---
+      \end{code}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{code}
+
+
+ ---------
+
+
+
+
+      \end{code}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{columns}[onlytextwidth,T]
+    \begin{column}{.5\textwidth}
+      \begin{code}
+  ____
+  |  |
+  |
+  |
+  |
+  |
+ ---
+      \end{code}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{code}
+
+
+ ---------
+
+ a
+
+
+      \end{code}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{columns}[onlytextwidth,T]
+    \begin{column}{.5\textwidth}
+      \begin{code}
+  ____
+  |  |
+  |
+  |
+  |
+  |
+ ---
+      \end{code}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{code}
+
+
+ --a-a----
+
+
+
+
+      \end{code}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{columns}[onlytextwidth,T]
+    \begin{column}{.5\textwidth}
+      \begin{code}
+  ____
+  |  |
+  |
+  |
+  |
+  |
+ ---
+      \end{code}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{code}
+
+
+ --a-a----
+
+ u
+
+
+      \end{code}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{columns}[onlytextwidth,T]
+    \begin{column}{.5\textwidth}
+      \begin{code}
+  ____
+  |  |
+  |
+  |
+  |
+  |
+ ---
+      \end{code}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{code}
+
+
+ -ua-a-u--
+
+
+
+
+      \end{code}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{columns}[onlytextwidth,T]
+    \begin{column}{.5\textwidth}
+      \begin{code}
+  ____
+  |  |
+  |
+  |
+  |
+  |
+ ---
+      \end{code}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{code}
+
+
+ -ua-a-u--
+
+ e
+
+
+      \end{code}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{columns}[onlytextwidth,T]
+    \begin{column}{.5\textwidth}
+      \begin{code}
+  ____
+  |  |
+  |  O
+  |
+  |
+  |
+ ---
+      \end{code}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{code}
+
+
+ -ua-a-u--
+
+
+
+
+      \end{code}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{columns}[onlytextwidth,T]
+    \begin{column}{.5\textwidth}
+      \begin{code}
+  ____
+  |  |
+  |  O
+  |
+  |
+  |
+ ---
+      \end{code}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{code}
+
+
+ -ua-a-u--
+
+ o
+
+
+      \end{code}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{columns}[onlytextwidth,T]
+    \begin{column}{.5\textwidth}
+      \begin{code}
+  ____
+  |  |
+  |  O
+  |  |
+  |
+  |
+ ---
+      \end{code}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{code}
+
+
+ -ua-a-u--
+
+
+
+
+      \end{code}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{columns}[onlytextwidth,T]
+    \begin{column}{.5\textwidth}
+      \begin{code}
+  ____
+  |  |
+  |  O
+  |  |
+  |
+  |
+ ---
+      \end{code}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{code}
+
+
+ -ua-a-u--
+
+ k
+
+
+      \end{code}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{columns}[onlytextwidth,T]
+    \begin{column}{.5\textwidth}
+      \begin{code}
+  ____
+  |  |
+  |  O
+  | /|
+  |
+  |
+ ---
+      \end{code}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{code}
+
+
+ -ua-a-u--
+
+
+
+
+      \end{code}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{columns}[onlytextwidth,T]
+    \begin{column}{.5\textwidth}
+      \begin{code}
+  ____
+  |  |
+  |  O
+  | /|
+  |
+  |
+ ---
+      \end{code}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{code}
+
+
+ -ua-a-u--
+
+ i
+
+
+      \end{code}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{columns}[onlytextwidth,T]
+    \begin{column}{.5\textwidth}
+      \begin{code}
+  ____
+  |  |
+  |  O
+  | /|
+  |
+  |
+ ---
+      \end{code}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{code}
+
+
+ -ua-a-ui-
+
+
+
+
+      \end{code}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{columns}[onlytextwidth,T]
+    \begin{column}{.5\textwidth}
+      \begin{code}
+  ____
+  |  |
+  |  O
+  | /|
+  |
+  |
+ ---
+      \end{code}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{code}
+
+
+ -ua-a-ui-
+
+ c
+
+
+      \end{code}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{columns}[onlytextwidth,T]
+    \begin{column}{.5\textwidth}
+      \begin{code}
+  ____
+  |  |
+  |  O
+  | /|\
+  |
+  |
+ ---
+      \end{code}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{code}
+
+
+ -ua-a-ui-
+
+
+
+
+      \end{code}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{columns}[onlytextwidth,T]
+    \begin{column}{.5\textwidth}
+      \begin{code}
+  ____
+  |  |
+  |  O
+  | /|\
+  |
+  |
+ ---
+      \end{code}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{code}
+
+
+ -ua-a-ui-
+
+ g
+
+
+      \end{code}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{columns}[onlytextwidth,T]
+    \begin{column}{.5\textwidth}
+      \begin{code}
+  ____
+  |  |
+  |  O
+  | /|\
+  |
+  |
+ ---
+      \end{code}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{code}
+
+
+ gua-a-ui-
+
+
+
+
+      \end{code}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{columns}[onlytextwidth,T]
+    \begin{column}{.5\textwidth}
+      \begin{code}
+  ____
+  |  |
+  |  O
+  | /|\
+  |
+  |
+ ---
+      \end{code}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{code}
+
+
+ gua-a-ui-
+
+ guayaquil
+
+
+      \end{code}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{columns}[onlytextwidth,T]
+    \begin{column}{.5\textwidth}
+      \begin{code}
+
+
+    \O/
+     |
+    / \
+
+
+      \end{code}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{code}
+
+
+¡guayaquil!
+
+
+
+
+      \end{code}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+
+  \begin{itemize}
+  \item
+    Modelo
+    \begin{figure}
+      \begin{tikzpicture}
+        \node [draw] {|[('e',False),('l',False),('m',False)]|};
+      \end{tikzpicture}
+    \end{figure}
+  \item
+    Vista
+    \begin{figure}
+      \begin{tikzpicture}
+        \node [state,initial] {|---|};
+      \end{tikzpicture}
+    \end{figure}
+  \item
+    Actualización
+    \begin{figure}
+      \begin{tikzpicture}
+        \node [state,initial]   (---)                  {|---|};
+        \node [state]           (---a) [right of=---]  {|---|};
+        \node [state]           (e--)  [right of=---a] {|e--|};
+        \node [state]           (e-m)  [right of=e--]  {|e-m|};
+        \node [state,accepting] (elm)  [right of=e-m]  {|elm|};
+
+        \draw [->] (---)  to node [above] {\texttt{a}} (---a);
+        \draw [->] (---a) to node [above] {\texttt{e}} (e--);
+        \draw [->] (e--)  to node [above] {\texttt{m}} (e-m);
+        \draw [->] (e-m)  to node [above] {\texttt{l}} (elm);
+      \end{tikzpicture}
+    \end{figure}
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+
+  \begin{code}
+type alias Model =
+  List (Char, Bool)
+  \end{code}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+
+  \begin{code}
+init : String -> Model
+init word =
+  String.foldr (::) [] word
+    |> List.map (\letter -> (letter, False))
+  \end{code}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+
+  \begin{code}
+update : Action -> Model -> Model
+update guess letters =
+  let
+    match guess (letter, guessed) =
+      (letter, guess == letter || guessed)
+  in
+    List.map (match guess) letters
+  \end{code}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+
+  \begin{code}
+view : Signal.Address Action -> Model -> Html
+  \end{code}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+
+  \begin{code}
+main : Signal Html
+main =
+  StartApp.start
+    { model = init "guayaquil"
+    , view = view
+    , update = update
+    }
+  \end{code}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+
+  \begin{itemize}
+  \item
+    Modelo
+    \begin{figure}
+      \begin{tikzpicture}
+        \node [draw] {|[('e',False),('l',False),('m',False)]|};
+      \end{tikzpicture}
+    \end{figure}
+  \item
+    Vista
+    \begin{figure}
+      \begin{tikzpicture}
+        \node [state with output,initial] {|---| \nodepart{lower} 6};
+      \end{tikzpicture}
+    \end{figure}
+  \item
+    Actualización
+    \begin{figure}
+      \begin{tikzpicture}[state/.style=state with output]
+        \node [state,initial] (---) {|---| \nodepart{lower} 6};
+        \node [state] (---a) [right of=---] {|---| \nodepart{lower} 5};
+        \node [state] (e--)  [right of=---a] {|e--| \nodepart{lower} 5};
+
+        \draw [->] (---)  to node [above] {\texttt{a}} (---a);
+        \draw [->] (---a) to node [above] {\texttt{e}} (e--);
+      \end{tikzpicture}
+    \end{figure}
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
