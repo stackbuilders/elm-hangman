@@ -66,7 +66,7 @@ update guess game =
     { game | letters <- letters, status <- status }
 
 
--- view
+-- View
 
 view : Signal.Address Action -> Model -> Html
 view address game =
