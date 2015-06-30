@@ -36,7 +36,7 @@ update guess letters =
     List.map (match guess) letters
 
 
--- view
+-- View
 
 view : Signal.Address Action -> Model -> Html
 view address model =
