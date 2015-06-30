@@ -20,6 +20,8 @@
 \DefineShortVerb{\|}
 \DefineVerbatimEnvironment{code}{Verbatim}{frame=lines}
 
+\usepackage{fontawesome}
+
 \title{Ahorcado}
 \subtitle{Programación funcional imperativa con Elm}
 \author{Juan Pedro Villa Isaza}
@@ -587,8 +589,60 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}[fragile]
+\begin{frame}
+  \begin{columns}[onlytextwidth,T]
+    \begin{column}{.5\textwidth}
+      \begin{figure}
+        \includegraphics[scale=0.4]{elm.png}
+      \end{figure}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      Elm es:
+      \begin{itemize}
+      \item<1->
+        Funcional
+      \item<1->
+        \emph{Puro}
+        \begin{itemize}
+        \item<1->
+          Inmutabilidad
+        \item<1->
+          Sin efectos secundarios
+        \item<1->
+          Transparencia referencial
+        \end{itemize}
+      \item<1-> ...
+      \end{itemize}
+      \begin{itemize}
+      \item<2->
+        \emph{Interesante}
+      \item<3->
+        ¿\alert{Inútil}?
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \begin{figure}
+    \includegraphics[height=.9\textheight]{elm-hangman-1.png}
+  \end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}<1>[label=quote]
+  \begin{quote}
+    Los lenguajes de programación funcional son los mejores lenguajes
+    de programación imperativa.
+  \end{quote}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
   \begin{itemize}
   \item
     Modelo
@@ -626,7 +680,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}[fragile]
-
   \begin{code}
 type alias Model =
   List (Char, Bool)
@@ -636,7 +689,6 @@ type alias Model =
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}[fragile]
-
   \begin{code}
 init : String -> Model
 init word =
@@ -648,7 +700,15 @@ init word =
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}[fragile]
+  \begin{code}
+type alias Action =
+  Char
+  \end{code}
+\end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
   \begin{code}
 update : Action -> Model -> Model
 update guess letters =
@@ -663,16 +723,38 @@ update guess letters =
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}[fragile]
-
   \begin{code}
 view : Signal.Address Action -> Model -> Html
+view address model =
+  Html.div
+    [ ... ]
+    [ Html.h1 [] [ Html.text "Hangman" ]
+    , Html.h3 [] [ Html.text (toString model) ]
+    , Html.input
+        [ Html.Events.onKeyPress address Char.fromCode ]
+        []
+    ]
   \end{code}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}[fragile]
+  \begin{code}
+toString : Model -> String
+toString letters =
+  let
+    fromLetter (letter, guessed) =
+      if guessed then letter else '-'
+  in
+    List.map fromLetter letters
+      |> List.foldr String.cons ""
+  \end{code}
+\end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
   \begin{code}
 main : Signal Html
 main =
@@ -686,8 +768,15 @@ main =
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}[fragile]
+\begin{frame}
+  \begin{figure}
+    \includegraphics[width=\textwidth]{elm-hangman-2.png}
+  \end{figure}
+\end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
   \begin{itemize}
   \item
     Modelo
@@ -717,6 +806,87 @@ main =
     \end{figure}
   \end{itemize}
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{itemize}
+  \item
+    \begin{code}
+type alias Model =
+  { letters : List (Char, Bool)
+  , status : Status
+  }
+    \end{code}
+  \item
+    \begin{code}
+type Status
+  = Lost
+  | Playing Int
+  | Won
+    \end{code}
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{figure}
+    \begin{tikzpicture}
+      \node (a) at (0,0) {
+        \begin{tabular}{c}
+          \Huge{\faDesktop}\\\huge{\faKeyboard}
+        \end{tabular}
+      };
+      \node [draw] (c) at (4,4) {
+        \begin{tabular}{c}
+          Arquitectura Elm:\\|Model|, |view|, |update|
+        \end{tabular}
+      };
+      \draw [->,dotted] (a) -- (0,4) -- (c);
+      \draw [->,dotted] (c) -- (4,0) -- (a);
+    \end{tikzpicture}
+  \end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  Distinción clara entre:
+  \begin{itemize}
+  \item
+    Código impuro y código puro
+  \item
+    Programación imperativa y programación no imperativa
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \begin{itemize}
+  \item
+    Lo mejor de la programación funcional:
+    \begin{itemize}
+    \item
+      Razonamiento ecuacional
+    \item
+      ...
+    \end{itemize}
+  \item
+    Programación funcional imperativa:
+    \begin{itemize}
+    \item
+      Menos dolores de cabeza
+    \item
+      ...
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\againframe<2>{quote}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
